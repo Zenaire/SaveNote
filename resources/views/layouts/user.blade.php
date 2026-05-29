@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Dashboard User</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    @livewireStyles 
 </head>
-<body>
-    <section>
-        <ul>
-            <li class="text-grey-500 align-middle">Halo</li>
-            <li class="text-grey-500 align-middle">Halo</li>
-            <li class="text-grey-500 align-middle">Halo</li>
-        </ul>
-    </section>
+<body class="bg-[#0f0f17] text-white min-h-screen">
+
+    @yield('content')
+
+    @livewireScripts 
 </body>
 </html>

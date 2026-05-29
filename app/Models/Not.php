@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Not extends Model
     {
+        protected $table = 'notes';
         protected $fillable = [
         'user_id',
         'folder_id',

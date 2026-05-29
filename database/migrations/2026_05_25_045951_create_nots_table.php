@@ -14,34 +14,17 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
     
-            $table->foreignId('user_id')
-                  ->constrained()
-                  ->onDelete('cascade');
-    
-            $table->foreignId('folder_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
-    
-            $table->foreignId('category_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
-    
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('folder_id')->nullable()->constrained('polders')->nullOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('kategoris')->nullOnDelete();
             $table->string('title');
-    
-            $table->string('subtitle')
-                  ->nullable();
-    
-            $table->longText('content');
-    
-            $table->string('media')
-                  ->nullable();
-    
+            $table->string('subtitle')->nullable();
+            $table->longText('content')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */

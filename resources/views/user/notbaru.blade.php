@@ -1,5 +1,5 @@
 @extends('layouts.user')
 
 @section('content')
-    @livewire('user.home')
+    @livewire('user.new-note')
 @endsection
