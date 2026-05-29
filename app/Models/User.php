@@ -29,4 +29,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function notes()
+    {
+        return $this->hasMany(Not::class);
+    }
+    
+    public function folders()
+    {
+        return $this->hasMany(Polder::class);
+    }
 }
