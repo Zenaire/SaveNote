@@ -22,4 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/newNote', function () {
         return view('user.notbaru'); 
     });
+    Route::get('/edit', function () {
+        return view('user.editnot'); 
+    });
 });
