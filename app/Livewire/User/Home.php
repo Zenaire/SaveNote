@@ -12,6 +12,9 @@ class Home extends Component
 {
     public $search = '';
     public $selectedCategory = '';
+    public $title;
+    public $subtitle;
+    public $content;
 
     public function render()
     {
@@ -45,4 +48,18 @@ class Home extends Component
 
         return redirect('/login');
     }
+
+
+     public function destroy($id)
+    {
+        $note = Not::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+        $note->delete();
+
+        session()->flash('success', 'Catatan berhasil dihapus!');
+    }
+
+  public function edit($id)
+{
+   
+} 
 }

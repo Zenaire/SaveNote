@@ -78,4 +78,6 @@ class NewNote extends Component
         $this->newFolderName = '';
         session()->flash('success', 'Folder berhasil dibuat!');
     }
+
+  
 }

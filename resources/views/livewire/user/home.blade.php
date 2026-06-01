@@ -40,10 +40,20 @@
 
                 <div class="flex items-center gap-3">
 
+                    <div>
+                        <img src=" https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
+                            class="w-10 h-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg mb-2 ml-5">
+                        <a href=" /profile"
+                            class="text-white font-semibold bg-gradient-to-r bg-blue-500 px-4 py-2 rounded-2xl shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition">Profile</a>
+                        </a>
+                    </div>
+
                     <a class="bg-gradient-to-r bg-blue-500  px-6 py-3 rounded-2xl font-semibold shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition"
                         href="/newNote">
                         + New Note
                     </a>
+
+
 
                     <button wire:click='logout'
                         class="bg-white/5 border  border-white/10 backdrop-blur-xl px-5 py-3 rounded-2xl hover:bg-white/10 transition">
@@ -81,72 +91,83 @@
             <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
 
                 @forelse($notes as $note)
-                    <div class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[28px] p-6 hover:border-blue-400/30 hover:-translate-y-1 transition duration-300 shadow-2xl shadow-black/20 flex flex-col h-full overflow-hidden relative">
+                <div
+                    class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[28px] p-6 hover:border-blue-400/30 hover:-translate-y-1 transition duration-300 shadow-2xl shadow-black/20 flex flex-col h-full overflow-hidden relative">
 
-                        @if($note->media)
-                            <div class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-black/20 overflow-hidden">
-                                <img src="{{ asset('storage/' . $note->media) }}" alt="Thumbnail" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                            </div>
-                        @else
-                            <div class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-gradient-to-br from-white/5 to-blue-500/10 flex items-center justify-center p-6 text-center overflow-hidden group">
-                                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50"></div>
-                                <h1 class="text-2xl font-bold text-white/90 line-clamp-3 relative z-10 group-hover:scale-105 transition duration-500">
-                                    {{ $note->title }}
-                                </h1>
-                            </div>
-                        @endif
-
-                        <div class="flex items-start justify-between mb-4 min-h-[28px]">
-                            <div class="flex-1">
-                                @if($note->category)
-                                    <span class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-400/20">
-                                        {{ $note->category->name }}
-                                    </span>
-                                @endif
-                            </div>
-
-                            <div class="flex gap-3 text-sm shrink-0">
-                                <button class="text-zinc-400 hover:text-white transition">Edit</button>
-                                <button class="text-red-400 hover:text-red-300 transition">Delete</button>
-                            </div>
-                        </div>
-
-                        @if($note->media)
-                            <h1 class="text-xl font-bold text-white mb-1 line-clamp-1" title="{{ $note->title }}">
-                                {{ $note->title }}
-                            </h1>
-                        @endif
-                        
-                        @if($note->subtitle)
-                            <h2 class="text-sm font-medium text-gray-400 mb-3 line-clamp-1" title="{{ $note->subtitle }}">
-                                {{ $note->subtitle }}
-                            </h2>
-                        @else
-                            <div class="mb-3 h-5"></div>
-                        @endif
-
-                        <p class="text-blue-100/50 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
-                            {{ $note->content }}
-                        </p>
-
-                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
-                            <div class="text-xs text-blue-100/30">
-                                Updated {{ $note->updated_at->diffForHumans() }}
-                            </div>
-                            <button class="text-blue-300 hover:underline text-sm">
-                                Read More →
-                            </button>
-                        </div>
-
+                    @if($note->media)
+                    <div
+                        class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-black/20 overflow-hidden">
+                        <img src="{{ asset('storage/' . $note->media) }}" alt="Thumbnail"
+                            class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
+                    @else
+                    <div
+                        class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-gradient-to-br from-white/5 to-blue-500/10 flex items-center justify-center p-6 text-center overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50">
+                        </div>
+                        <h1
+                            class="text-2xl font-bold text-white/90 line-clamp-3 relative z-10 group-hover:scale-105 transition duration-500">
+                            {{ $note->title }}
+                        </h1>
+                    </div>
+                    @endif
+
+                    <div class="flex items-start justify-between mb-4 min-h-[28px]">
+                        <div class="flex-1">
+                            @if($note->category)
+                            <span
+                                class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-400/20">
+                                {{ $note->category->name }}
+                            </span>
+                            @endif
+                        </div>
+
+                        <div class="flex gap-3 text-sm shrink-0">
+                            <button class="text-zinc-400 hover:text-white transition"
+                                wire:click="edit({{ $note->id }})">Edit</button> // blm di code //
+                            <button class="text-red-400 hover:text-red-300 transition"
+                                wire:click="destroy({{ $note->id }})">Delete</button>
+                        </div>
+                    </div>
+
+                    @if($note->media)
+                    <h1 class="text-xl font-bold text-white mb-1 line-clamp-1" title="{{ $note->title }}">
+                        {{ $note->title }}
+                    </h1>
+                    @endif
+
+                    @if($note->subtitle)
+                    <h2 class="text-sm font-medium text-gray-400 mb-3 line-clamp-1" title="{{ $note->subtitle }}">
+                        {{ $note->subtitle }}
+                    </h2>
+                    @else
+                    <div class="mb-3 h-5"></div>
+                    @endif
+
+                    <p class="text-blue-100/50 text-sm leading-relaxed mb-6 flex-grow line-clamp-3">
+                        {{ $note->content }}
+                    </p>
+
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                        <div class="text-xs text-blue-100/30">
+                            Updated {{ $note->updated_at->diffForHumans() }}
+                        </div>
+                        <button class="text-blue-300 hover:underline text-sm">
+                            Read More →
+                        </button>
+                    </div>
+
+                </div>
                 @empty
-                    <div class="col-span-full flex flex-col items-center justify-center py-16 text-center bg-white/5 border border-white/10 rounded-[28px] backdrop-blur-sm">
-                        <div class="text-4xl mb-4">📝</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Belum ada catatan</h3>
-                        <p class="text-gray-400 text-sm">Tulis ide pertamamu sekarang juga!</p>
-                    </div>
+                <div
+                    class="col-span-full flex flex-col items-center justify-center py-16 text-center bg-white/5 border border-white/10 rounded-[28px] backdrop-blur-sm">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Belum ada catatan</h3>
+                    <p class="text-gray-400 text-sm">Tulis ide pertamamu sekarang juga!</p>
+                </div>
                 @endforelse
 
             </div>
 
-    </div>
+        </div>
