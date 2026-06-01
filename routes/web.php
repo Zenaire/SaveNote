@@ -26,3 +26,5 @@ Route::middleware('auth')->group(function () {
         return view('user.editnot'); 
     });
 });
+// Profile Route //
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
