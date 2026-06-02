@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Auth\Auth;
 use App\Livewire\User\Home;
+use App\Models\Not;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', function () {
         return view('auth.auth');
     });
-    
+
     Route::get('/login', function () {
         return view('auth.auth');
     })->name('login');
@@ -17,15 +18,12 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('user.biji'); 
+        return view('user.biji');
     });
     Route::get('/newNote', function () {
-        return view('user.notbaru'); 
+        return view('user.notbaru');
     });
-    Route::get('/edit', function () {
-        return view('user.editnot'); 
-    });
-    Route::get('/profile', function () {
-        return view('user.editnot'); 
-    });
+    Route::get('/edit/{id}', function ($id) {
+        return view('user.editnot');
+    })->name('note.edit');
 });
