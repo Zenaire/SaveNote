@@ -1,232 +1,213 @@
-<div class="min-h-screen flex items-center justify-center">
-    <script src=" https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes glow {
+<div class="min-h-screen py-10 px-4">
+    <div class="max-w-3xl mx-auto">
 
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-            }
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
 
-            50% {
-                box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
-            }
-        }
+            <div>
+                <a href="/profile"
+                    class="group flex items-center text-gray-400 hover:text-blue-400 transition-colors mb-2 text-sm">
 
-        .glow-animation {
-            animation: glow 3s ease-in-out infinite;
-        }
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
 
-        .profile-image {
-            transition: all 0.3s ease;
-        }
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
 
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
-        }
+                    Back to Profile
+                </a>
 
-        .edit-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
+                <h1 class="text-3xl font-bold text-white tracking-tight">
+                    Edit Profile
+                </h1>
 
-        .contact-card {
-            transition: all 0.3s ease;
-        }
+                <p class="text-gray-500 mt-1">
+                    Update your personal information
+                </p>
+            </div>
 
-        .contact-card:hover {
-            border-color: #3b82f6;
-            background-color: rgba(59, 130, 246, 0.05);
-        }
+            <div class="hidden md:block">
+                <div
+                    class="h-12 w-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
 
-        .action-button {
-            transition: all 0.3s ease;
-        }
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 text-blue-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
 
-        .action-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-        }
-
-        .stat-card {
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .icon-item {
-            transition: all 0.3s ease;
-        }
-
-        .icon-item:hover {
-            transform: scale(1.1);
-        }
-
-        .upload-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .profile-image-container:hover .upload-overlay {
-            opacity: 1;
-        }
-    </style>
-    </head>
-
-    <body class="bg-gradient-to-b from-slate-950 to-black text-white">
-        <main class="min-h-screen flex items-center justify-center px-4 py-8">
-            <div class="w-full max-w-2xl">
-                <!-- Header Background -->
-                <div class="relative mb-8 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 p-8 overflow-hidden">
-                    <div
-                        class="glow-animation absolute -right-20 -top-20 size-40 rounded-full bg-blue-500 blur-3xl opacity-20">
-                    </div>
-                    <div class="relative z-10">
-                        <h1 class="text-3xl font-bold tracking-tight">Edit-Profile</h1>
-                        <p class="text-slate-400 text-sm mt-1">Manage your account settings and preferences</p>
-                    </div>
-                </div>
-
-                <!-- Main Profile Card -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-8">
-                    <!-- Profile Header -->
-                    <div class="flex flex-col sm:flex-row gap-8 items-start">
-                        <!-- Profile Image -->
-                        <div class="profile-image-container relative">
-                            <img src="{{ Auth::user()->profile_photo_path }}" alt="Profile"
-                                class="profile-image size-32 rounded-full border-4 border-blue-500" />
-                            <div>
-                                <div class="text-center">
-                                    <div class="mt-3">
-                                        <input type="file" class="hidden" id="profile-photo">
-                                        <label for="profile-photo" class="cursor-pointer">
-                                            <span
-                                                class="border border-slate-600 hover:border-blue-500 text-white py-2 px-4 rounded-lg transition-all hover:shadow-lg">
-                                                Upload Photo
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Profile and Buttons -->
-                        <div class="flex-1">
-                            <div class="space-y-1 mb-4">
-                                <h2 class="text-2xl font-bold">{{ Auth::user()->name }}</h2>
-                                <div class="text-center flex py-2">
-                                    <button
-                                        class="edit-button px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all">
-                                        Edit Name
-                                    </button>
-                                </div>
-                                <div class="py-4">
-                                    <p class="text-blue-400 font-medium">{{Auth::user()->email}}</p>
-                                    <button
-                                        class="edit-button px-6 py-2 mt-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all">
-                                        Edit Email
-                                    </button>
-
-                                    <p class="text-slate-400 text-sm max-w-md mt-2.5">Lorem ipsum, dolor sit
-                                        amet
-                                        consectetur
-                                        adipisicing elit. Eos, atque tenetur dolore pariatur deleniti magnam enim
-                                        voluptate
-                                        optio quaerat sint.</p>
-                                </div>
-                            </div>
-
-                            <!-- Buttons -->
-                            <div class="flex flex-wrap gap-3">
-                                <a href="/profile">
-                                    <button
-                                        class="edit-button px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all">
-                                        Profile
-                                    </button>
-                                </a>
-                                <a href="/dashboard">
-                                    <button
-                                        class="action-button px-6 py-2 border border-slate-600 rounded-lg font-medium hover:border-blue-500 transition-all"
-                                        href="/dashboard">
-                                        Back to Dashboard
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Information -->
-                    <div class="pt-6 border-t border-slate-800">
-                        <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">Contact
-                            Information
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <div class="contact-card border border-slate-700 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg class="icon-item size-5 text-blue-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                        </path>
-                                    </svg>
-                                    <span
-                                        class="text-xs text-slate-400 uppercase tracking-wide font-semibold">Email</span>
-                                </div>
-                                <p class="text-sm text-white truncate">alexandra@example.com</p>
-                            </div>
-
-                            <div class="contact-card border border-slate-700 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg class="icon-item size-5 text-blue-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                        </path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                    <span
-                                        class="text-xs text-slate-400 uppercase tracking-wide font-semibold">Location</span>
-                                </div>
-                                <p class="text-sm text-white truncate">San Francisco, CA</p>
-                            </div>
-
-                            <div class="contact-card border border-slate-700 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <svg class="icon-item size-5 text-blue-400" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.658 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
-                                        </path>
-                                    </svg>
-                                    <span
-                                        class="text-xs text-slate-400 uppercase tracking-wide font-semibold">Website</span>
-                                </div>
-                                <p class="text-sm text-blue-400 truncate">www.alexandra.design</p>
-                            </div>
-                        </div>
-                    </div>
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
 
                 </div>
-        </main>
-    </body>
-
-    <div>
-        <div>
+            </div>
 
         </div>
+
+        @if (session()->has('success'))
+            <div class="mb-6 bg-green-500/10 border border-green-500/20 text-green-400 rounded-2xl p-4">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form wire:submit.prevent="update"
+            class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-3xl p-6 md:p-10 shadow-2xl space-y-8">
+        
+            <!-- Profile Photo -->
+            <div class="flex flex-col items-center">
+        
+                <div class="relative group">
+        
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}"
+                            class="w-32 h-32 rounded-full object-cover border-4 border-white/10">
+                    @else
+                        <img
+                            src="{{ Auth::user()->profile_photo_path ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}"
+                            class="w-32 h-32 rounded-full object-cover border-4 border-white/10">
+                    @endif
+        
+                    <div
+                        class="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+        
+                        <span class="text-sm text-white">
+                            Change Photo
+                        </span>
+        
+                    </div>
+        
+                </div>
+        
+                <label
+                    class="mt-4 px-5 py-2 rounded-xl border border-white/10 text-gray-300 hover:border-blue-500/50 hover:text-white cursor-pointer transition">
+        
+                    Upload Photo
+        
+                    <input
+                        type="file"
+                        wire:model="photo"
+                        class="hidden">
+        
+                </label>
+        
+                <div wire:loading wire:target="photo"
+                    class="text-blue-400 text-sm mt-3">
+                    Uploading...
+                </div>
+        
+            </div>
+        
+            <!-- Name -->
+            <div class="space-y-2">
+        
+                <label class="text-sm font-medium text-gray-400 ml-1">
+                    Full Name
+                </label>
+        
+                <input
+                    type="text"
+                    wire:model="name"
+                    class="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+        
+                @error('name')
+                    <p class="text-red-400 text-xs ml-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+        
+            </div>
+        
+            <!-- Email -->
+            <div class="space-y-2">
+        
+                <label class="text-sm font-medium text-gray-400 ml-1">
+                    Email Address
+                </label>
+        
+                <input
+                    type="email"
+                    wire:model="email"
+                    class="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+        
+                @error('email')
+                    <p class="text-red-400 text-xs ml-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+        
+            </div>
+        
+            <!-- Password -->
+            <div class="space-y-2">
+        
+                <label class="text-sm font-medium text-gray-400 ml-1">
+                    New Password
+                </label>
+        
+                <input
+                    type="password"
+                    wire:model="password"
+                    placeholder="Leave blank if you don't want to change it"
+                    class="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+        
+                @error('password')
+                    <p class="text-red-400 text-xs ml-1">
+                        {{ $message }}
+                    </p>
+                @enderror
+        
+            </div>
+        
+            <!-- Password Confirmation -->
+            <div class="space-y-2">
+        
+                <label class="text-sm font-medium text-gray-400 ml-1">
+                    Confirm Password
+                </label>
+        
+                <input
+                    type="password"
+                    wire:model="password_confirmation"
+                    placeholder="Repeat your password"
+                    class="w-full bg-black/40 border border-white/10 rounded-2xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+        
+            </div>
+        
+            <!-- Buttons -->
+            <div class="flex items-center justify-end space-x-4 pt-6 border-t border-white/5">
+        
+                <a href="/profile"
+                    class="px-6 py-3 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                    Cancel
+                </a>
+        
+                <button
+                    type="submit"
+                    wire:loading.attr="disabled"
+                    class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-2xl font-semibold transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)] disabled:opacity-50">
+        
+                    <span wire:loading.remove wire:target="update">
+                        Save Changes
+                    </span>
+        
+                    <span wire:loading wire:target="update">
+                        Saving...
+                    </span>
+        
+                </button>
+        
+            </div>
+        
+        </form>
+
     </div>
+</div>

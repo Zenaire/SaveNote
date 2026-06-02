@@ -41,8 +41,7 @@
                 <div class="flex items-center gap-3">
 
                     <div>
-                        <img src=" https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt=""
-                            class="w-10 h-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg mb-2 ml-5">
+                        <img src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}" class="w-10 h-10 rounded-full hover:scale-110 transition-transform duration-200 shadow-md hover:shadow-lg mb-2 ml-5">
                         <a href=" /profile"
                             class="text-white font-semibold bg-gradient-to-r bg-blue-500 px-4 py-2 rounded-2xl shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition">Profile</a>
                         </a>

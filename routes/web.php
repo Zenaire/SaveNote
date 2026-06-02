@@ -23,11 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/newNote', function () {
         return view('user.notbaru');
     });
-    Route::get('/edit', function () {
+    Route::get('/edit/{id}', function ($id) {
         return view('user.editnot'); 
-    });
+    })->name('edit.note');
     Route::get('/profile', function () {
-        return view('user.profile'); 
+        return view('user.propil'); 
     });
    Route::get('/editProfile', function () {
         return view('user.editpropil'); 
