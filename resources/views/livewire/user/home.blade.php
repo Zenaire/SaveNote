@@ -124,7 +124,7 @@
                         </div>
 
                             <div class="flex gap-3 text-sm shrink-0">
-                                <a href="/edit" class="text-zinc-400 hover:text-white transition">Edit</a>
+                                <a href="/edit/{{ $note->id }}" class="text-zinc-400 hover:text-white transition">Edit</a>
                                 <button wire:click='destroy({{}})' class="text-red-400 hover:text-red-300 transition">Delete</button>
                             </div>
                         </div>
