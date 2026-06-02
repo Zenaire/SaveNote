@@ -26,6 +26,11 @@ Route::middleware('auth')->group(function () {
         return view('user.editnot'); 
     });
     Route::get('/profile', function () {
-        return view('user.editnot'); 
+        return view('user.profile'); 
     });
+
+   Route::get('/editProfile', function () {
+        return view('user.edit-profile'); 
+    });
+
 });
