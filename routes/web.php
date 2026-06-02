@@ -25,4 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit', function () {
         return view('user.editnot'); 
     });
+    Route::get('/profile', function () {
+        return view('user.editnot'); 
+    });
 });
