@@ -57,9 +57,4 @@ class Home extends Component
 
         session()->flash('success', 'Catatan berhasil dihapus!');
     }
-
-  public function edit($id)
-{
-   
-} 
 }

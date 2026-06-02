@@ -10,4 +10,7 @@ class EditNote extends Component
     {
         return view('livewire.user.edit-note');
     }
+    public function edit(){
+        
+    }
 }
