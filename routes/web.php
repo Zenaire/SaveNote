@@ -29,9 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', function () {
         return view('user.profile'); 
     });
-
    Route::get('/editProfile', function () {
-        return view('user.edit-profile'); 
+        return view('user.editpropil'); 
     });
 
 });
