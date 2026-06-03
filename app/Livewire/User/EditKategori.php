@@ -10,4 +10,10 @@ class EditKategori extends Component
     {
         return view('livewire.user.edit-kategori');
     }
+
+    public function edit()
+    {
+        $categories = Kategori::all();
+        
+    }
 }

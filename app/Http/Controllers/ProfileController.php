@@ -10,12 +10,12 @@ class ProfileController extends Controller
 public function index()
 {
     $user = Auth::user(); // Ambil data pengguna yang sedang login
-    return view('user.profile', compact('user')); // Kirim data pengguna ke view
+    return view('user.propil', compact('user')); // Kirim data pengguna ke view
 }
 
  public function edit()
 {
     $user = Auth::user(); // Ambil data pengguna yang sedang login
-    return view('user.edit-profile', compact('user')); // Kirim data pengguna ke view
+    return view('user.editpropil', compact('user')); // Kirim data pengguna ke view
 }
 }
