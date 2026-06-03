@@ -3,7 +3,6 @@
 
         <div class="absolute inset-0 pointer-events-none">
 
-            <!-- WELCOME TEXT -->
             <div @class([ 'absolute top-1/2 left-24 -translate-y-1/2 max-w-md transition-all duration-700 ease-in-out'
                 , 'translate-x-0 opacity-100'=> $mode === 'login',
                 'translate-x-[500px] opacity-0' => $mode === 'register',
@@ -12,7 +11,7 @@
                     <h2 class="text-5xl font-light">Welcome Back</h2>
 
                     <h1 class="text-7xl font-bold">
-                        MyNotepad
+                        Save Note
                     </h1>
 
                     <p class="text-zinc-500 leading-relaxed text-lg">
@@ -33,7 +32,7 @@
                     </h2>
 
                     <h1 class="text-7xl font-bold">
-                        MyNotepad
+                        Save Note
                     </h1>
 
                     <p class="text-zinc-500 leading-relaxed text-lg">
