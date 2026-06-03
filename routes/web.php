@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
         return view('user.biji');
     });
 
+    Route::get('/detail/{id}', function ($id) {
+        return view('user.detail');
+    })->name('detail.note');
+
     // Persoalan Note
 
     Route::get('/newNote', function () {

@@ -185,9 +185,9 @@
                                     Updated {{ $note->updated_at->diffForHumans() }}
                                 </div>
 
-                                <button class="text-blue-300 hover:underline text-sm">
+                                <a href="/detail/{{ $note->id }}" class="text-blue-300 hover:underline text-sm">
                                     Read More →
-                                </button>
+                                </a>
 
                             </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Models\Not;
 use App\Models\Polder;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -28,11 +29,14 @@ class Folders extends Component
             ->where('user_id', Auth::id())
             ->firstOrFail();
 
+        Not::where('folder_id', $folder->id)
+            ->update([
+                'folder_id' => null,
+            ]);
+
         $folder->delete();
 
         $this->loadFolders();
-
-        session()->flash('success', 'Folder berhasil dihapus.');
     }
 
     public function render()
