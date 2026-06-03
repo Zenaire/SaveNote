@@ -45,7 +45,7 @@ class EditNote extends Component
 
         $this->oldMedia = $this->note->media;
 
-        $this->categories = Kategori::all();
+        $this->categories = Kategori::where('user_id', Auth::id())->get();
         $this->folders = Polder::where('user_id', Auth::id())->get();
     }
 

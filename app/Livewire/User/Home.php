@@ -35,7 +35,7 @@ class Home extends Component
 
     return view('livewire.user.home', [
         'notes' => $notes,
-        'categories' => Kategori::all(),
+        'categories' => Kategori::where('user_id', Auth::id())->get(),
         'folders' => Polder::where('user_id', Auth::id())->get(),
     ]);
 }
