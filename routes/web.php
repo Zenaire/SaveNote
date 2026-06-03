@@ -32,5 +32,23 @@ Route::middleware('auth')->group(function () {
    Route::get('/editProfile', function () {
         return view('user.editpropil'); 
     });
+   Route::get('/kategori', function () {
+        return view('user.kateg'); 
+    });
+   Route::get('/editkategori', function () {
+        return view('user.editkateg'); 
+    });
+   Route::get('/createkategori', function () {
+        return view('user.buatkateg'); 
+    });
+   Route::get('/folders', function () {
+        return view('user.polder'); 
+    });
+   Route::get('/editfolder', function () {
+        return view('user.editfpolder'); 
+    });
+   Route::get('/createfolder', function () {
+        return view('user.buatpolder'); 
+    });
 
 });
