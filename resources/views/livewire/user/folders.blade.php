@@ -6,6 +6,9 @@
     <a href="/dashboard" class="relative z-10 text-sm text-blue-400 hover:text-blue-300">
         Back To Dashboard
     </a>
+    <a href="/createfolder" class="relative z-10 text-sm text-blue-400 hover:text-blue-300">
+        New Folder
+    </a>
 
     <div class="grid gap-3">
         @foreach($folders as $folder)
@@ -50,6 +53,10 @@
                         class="relative z-10 text-sm text-blue-400 hover:text-blue-300">
                         Edit
                     </a>
+                    <button wire:click="destroy({{ $folder->id }})" wire:confirm="Yakin ingin menghapus folder ini?"
+                        class="text-sm text-red-400 hover:text-red-300">
+                        Delete
+                    </button>
 
                 </div>
 
