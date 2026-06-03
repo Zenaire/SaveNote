@@ -48,13 +48,13 @@ Route::middleware('auth')->group(function () {
         return view('user.editpropil'); 
     });
 
-    // Persoalan Katek=gori
+    // Persoalan Kategori
 
    Route::get('/kategori', function () {
         return view('user.kateg'); 
     });
 
-   Route::get('/editkategori', function () {
+   Route::get('/editkategori/{id}', function ($id) {
         return view('user.editkateg'); 
     });
 

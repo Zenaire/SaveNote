@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $fillable = ['name'];
-    //
+    protected $fillable = [
+        'user_id',
+        'name',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function notes()
     {
-        return $this->hasMany(Not::class);
+        return $this->hasMany(Not::class, 'category_id');
     }
 }
