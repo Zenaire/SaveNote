@@ -3,13 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Not;
 
 class Polder extends Model
 {
     protected $fillable = [
     'user_id',
-    'name'
+    'name',
+    'thumbnail'
 ];
+
 
 public function user()
 {
