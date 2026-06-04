@@ -25,7 +25,7 @@
             <div class="flex items-center justify-between mb-10">
                 <div>
                     <h1 class="text-4xl font-black tracking-tight">
-                        My Notes
+                        Save Note
                     </h1>
 
                     <p class="text-blue-200/60 mt-2">
@@ -101,9 +101,10 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch max-w-7xl">
 
-                </div>
+            </div>
 
-            <div wire:key="notes-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch w-full mt-8">
+            <div wire:key="notes-grid-container"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch w-full mt-8">
 
                 @forelse($notes as $note)
 
@@ -111,14 +112,19 @@
                     class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[28px] p-6 hover:border-blue-400/30 hover:-translate-y-1 transition duration-300 shadow-2xl shadow-black/20 flex flex-col h-full overflow-hidden relative">
 
                     @if($note->media)
-                    <div class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-black/20 overflow-hidden">
+                    <div
+                        class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-black/20 overflow-hidden">
                         <img src="{{ asset('storage/' . $note->media) }}" alt="Thumbnail"
                             class="w-full h-full object-cover hover:scale-105 transition duration-500">
                     </div>
                     @else
-                    <div class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-gradient-to-br from-white/5 to-blue-500/10 flex items-center justify-center p-6 text-center overflow-hidden group">
-                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50"></div>
-                        <h1 class="text-2xl font-bold text-white/90 line-clamp-3 relative z-10 group-hover:scale-105 transition duration-500">
+                    <div
+                        class="-mx-6 -mt-6 mb-5 h-48 shrink-0 relative border-b border-white/10 bg-gradient-to-br from-white/5 to-blue-500/10 flex items-center justify-center p-6 text-center overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50">
+                        </div>
+                        <h1
+                            class="text-2xl font-bold text-white/90 line-clamp-3 relative z-10 group-hover:scale-105 transition duration-500">
                             {{ $note->title }}
                         </h1>
                     </div>
@@ -129,15 +135,19 @@
                         <div class="flex items-start justify-between mb-4 min-h-[28px]">
                             <div class="flex-1">
                                 @if($note->category)
-                                <span class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-400/20">
+                                <span
+                                    class="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-400/20">
                                     {{ $note->category->name }}
                                 </span>
                                 @endif
                             </div>
 
                             <div class="flex gap-3 text-sm shrink-0">
-                                <a href="/edit/{{ $note->id }}" class="text-zinc-400 hover:text-white transition">Edit</a>
-                                <button wire:click="destroy('{{ $note->id }}')" class="text-red-400 hover:text-red-300 transition">Delete</button>
+                                <a href="/edit/{{ $note->id }}"
+                                    class="text-zinc-400 hover:text-white transition">Edit</a>
+                                <button wire:confirm="Yakin ingin menghapus catatan ini?"
+                                    wire:click="destroy('{{ $note->id }}')"
+                                    class="text-red-400 hover:text-red-300 transition">Delete</button>
                             </div>
                         </div>
 
@@ -185,8 +195,8 @@
 
             </div>
 
-            </div>
-
         </div>
+
     </div>
+</div>
 </div>

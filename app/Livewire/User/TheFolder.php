@@ -47,6 +47,13 @@ class TheFolder extends Component
         session()->flash('success', 'Note berhasil dikeluarkan dari folder.');
     }
 
+    public function destroy($id)
+    {
+        $note = Not::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+        $note->delete();
+
+        session()->flash('success', 'Catatan berhasil dihapus!');
+    }
     public function render()
     {
         return view('livewire.user.the-folder');

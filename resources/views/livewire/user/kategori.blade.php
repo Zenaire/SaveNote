@@ -41,9 +41,6 @@
                 class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-3xl p-6 mb-10 shadow-2xl shadow-black/20">
                 <div class="flex flex-col md:flex-row gap-4 items-center">
                     <div class="relative w-full flex-1">
-                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                            <span class="text-gray-500">🏷️</span>
-                        </div>
                         <input id="categoryInput" type="text" placeholder="Enter new category name..."
                             class="w-full bg-black/40 border border-white/10 rounded-2xl pl-12 pr-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all">
                     </div>
@@ -67,16 +64,6 @@
                         {{ count($categories ?? []) }} Categories
                     </span>
                 </div>
-
-                <a href="/editkategori"
-                    class="text-sm text-zinc-400 hover:text-white flex items-center gap-2 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                    </svg>
-                    Edit All
-                </a>
             </div>
 
             <div id="categoryGrid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
@@ -86,12 +73,13 @@
                 <div wire:key="category-{{ $category->id ?? loop->index }}"
                     class="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[28px] p-6 hover:border-blue-400/30 hover:-translate-y-1 transition duration-300 shadow-2xl shadow-black/20 flex flex-col relative group">
 
-                    <div class="flex items-start justify-between mb-2">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-gradient-to-br from-white/5 to-blue-500/10 flex items-center justify-center border border-white/5 mb-4 group-hover:scale-110 transition-transform">
-                            <span class="text-xl">📁</span>
-                        </div>
 
+                    <h2 class="text-xl font-bold text-white line-clamp-1 mb-6">
+                        {{ $category->name ?? 'Category Name' }}
+                    </h2>
+
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                    <div class="flex items-start justify-between mb-2">
                         <div class="flex gap-3 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                             <a href="/editkategori/{{ $category->id ?? '' }}"
                                 class="text-zinc-400 hover:text-white transition">
@@ -104,12 +92,6 @@
                             </button>
                         </div>
                     </div>
-
-                    <h2 class="text-xl font-bold text-white line-clamp-1 mb-6">
-                        {{ $category->name ?? 'Category Name' }}
-                    </h2>
-
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                         <div class="text-xs text-blue-100/30">
                             Updated {{ $category->updated_at ? $category->updated_at->diffForHumans() : 'Just now' }}
                         </div>

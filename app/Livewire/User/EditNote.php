@@ -52,8 +52,7 @@ class EditNote extends Component
     public function update()
     {
         $this->validate([
-            'title' => 'required|min:3',
-            'content' => 'required',
+            'title' => 'required'
         ]);
 
         $mediaPath = $this->oldMedia;
